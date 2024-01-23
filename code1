@@ -1,0 +1,16 @@
+n,s = [int(x) for x in input('Nhap n,S(vi du:3 2):').split()]
+lis = []
+print(f'Nhap mang {n} phan tu!')
+for i in range(n):
+    lis.append(int(input()))
+c0 = [1]*n
+def loop(k,total=s,l=sorted(lis,reverse=True)):
+    for i in range(n):
+        if l[i] > k:
+            l[i] -= 1
+            total -= 1
+    #print(k,total,l)
+    if total <= 0:
+        return k
+    return loop(k-1,total,l)
+print('k = '+str(loop(max(lis))))
